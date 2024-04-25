@@ -17,7 +17,7 @@ export default function Home() {
   }
 
   return (
-    <main className="mt-16 px-2 relative">
+    <main className="mt-24 px-2 relative">
       <div>
         <h1 className="text-lg font-bold mb-2">{todayTopics[0].topic}</h1>
 
@@ -30,8 +30,8 @@ export default function Home() {
               key={index}
               className="bg-gray-100 py-2 px-1"
             >
-              <h2 className="font-bold">{item.point}</h2>
-              <h3 className="px-2 text-justify text-sm font-semibold text-gray-600">
+              <h2 className="font-bold text-sm">{item.point}</h2>
+              <h3 className="px-2 text-justify text-xs font-semibold text-gray-600">
                 {item.description}
               </h3>
               <button
@@ -39,7 +39,7 @@ export default function Home() {
                   setIsReading((pre) => !pre)
                   handleClickOnText(item.description, 'US')
                 }}
-                className="bg-green-200 rounded px-2 text-sm font-bold cursor-pointer"
+                className="bg-green-200 rounded px-2 text-xs font-bold cursor-pointer"
               >
                 {isReading ? 'Stop' : 'Read US'}
               </button>
@@ -49,7 +49,7 @@ export default function Home() {
                   setIsReading((pre) => !pre)
                   handleClickOnText(item.description, 'UK')
                 }}
-                className="bg-blue-300 rounded px-2 text-sm font-bold cursor-pointer mx-2"
+                className="bg-blue-300 rounded px-2 text-xs font-bold cursor-pointer mx-2"
               >
                 {isReading ? 'Stop' : 'read UK'}
               </button>
@@ -66,10 +66,29 @@ export default function Home() {
               key={index}
               className="bg-gray-100 py-2 px-1"
             >
-              <h2 className=" font-bold">{item.point}</h2>
+              <h2 className=" font-bold text-sm">{item.point}</h2>
               <h3 className="px-2 text-justify text-xs font-semibold text-gray-600">
                 {item.description}
               </h3>
+              <button
+                onClick={() => {
+                  setIsReading((pre) => !pre)
+                  handleClickOnText(item.description, 'US')
+                }}
+                className="bg-green-200 rounded px-2 text-xs font-bold cursor-pointer"
+              >
+                {isReading ? 'Stop' : 'Read US'}
+              </button>
+
+              <button
+                onClick={() => {
+                  setIsReading((pre) => !pre)
+                  handleClickOnText(item.description, 'UK')
+                }}
+                className="bg-blue-300 rounded px-2 text-xs font-bold cursor-pointer mx-2"
+              >
+                {isReading ? 'Stop' : 'read UK'}
+              </button>
             </div>
           ))}
         </div>
