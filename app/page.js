@@ -8,7 +8,7 @@ export default function Home() {
   const handleClickOnText = (text, b) => {
     let speech = new SpeechSynthesisUtterance()
     speech.text = text
-    speech.lang = b === 'US' ? 'en-US' : 'en-GB' || 'en-US'
+    speech.lang = b === 'US' ? 'en-US' : 'en-GB'
     speech.rate = 0.75
     speech.volume = 0.8
     isReading ? speechSynthesis.cancel() : window.speechSynthesis.speak(speech)
@@ -40,7 +40,7 @@ export default function Home() {
                   setIsReading((pre) => !pre)
                   handleClickOnText(item.description, 'US')
                 }}
-                className="bg-green-200 rounded text-gray-700 px-2 text-xs font-bold cursor-pointer"
+                className="bg-green-200 opacity-60 rounded text-gray-700 px-2 text-xs font-bold cursor-pointer"
               >
                 {isReading ? 'Stop' : 'Read US'}
               </button>
@@ -50,7 +50,7 @@ export default function Home() {
                   setIsReading((pre) => !pre)
                   handleClickOnText(item.description, 'UK')
                 }}
-                className="bg-blue-300 text-gray-700 rounded px-2 text-xs font-bold cursor-pointer mx-2"
+                className="bg-blue-300 opacity-60 text-gray-700 rounded px-2 text-xs font-bold cursor-pointer mx-2"
               >
                 {isReading ? 'Stop' : 'read UK'}
               </button>
@@ -76,7 +76,7 @@ export default function Home() {
                   setIsReading((pre) => !pre)
                   handleClickOnText(item.description, 'US')
                 }}
-                className="bg-green-200 text-gray-700 rounded px-2 text-xs font-bold cursor-pointer"
+                className="bg-green-200 opacity-60 text-gray-700 rounded px-2 text-xs font-bold cursor-pointer"
               >
                 {isReading ? 'Stop' : 'Read US'}
               </button>
@@ -86,7 +86,7 @@ export default function Home() {
                   setIsReading((pre) => !pre)
                   handleClickOnText(item.description, 'UK')
                 }}
-                className="bg-blue-300 text-gray-700 rounded px-2 text-xs font-bold cursor-pointer mx-2"
+                className="bg-blue-300 opacity-60 text-gray-700 rounded px-2 text-xs font-bold cursor-pointer mx-2"
               >
                 {isReading ? 'Stop' : 'Read UK'}
               </button>
