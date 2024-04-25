@@ -1,14 +1,19 @@
 'use client'
+import { useState } from 'react'
 import { topics } from './data/data.js'
 export default function Home() {
   const todayTopics = topics
+  const [isReading, setIsReading] = useState(false)
   const handleClickOnText = (text, b) => {
     let speech = new SpeechSynthesisUtterance()
     speech.text = text
-    speech.lang = b === 'US' ? 'en-US' : 'en-GB'
+    speech.lang = b === 'US' ? 'en-US' : 'en-GB' || 'en-US'
     speech.rate = 0.75
     speech.volume = 0.8
-    window.speechSynthesis.speak(speech)
+    isReading ? speechSynthesis.cancel() : window.speechSynthesis.speak(speech)
+    speech.onend = function () {
+      setIsReading(false)
+    }
   }
 
   return (
@@ -27,17 +32,23 @@ export default function Home() {
                 {item.description}
               </h3>
               <button
-                onClick={() => handleClickOnText(item.description, 'US')}
+                onClick={() => {
+                  setIsReading((pre) => !pre)
+                  handleClickOnText(item.description, 'US')
+                }}
                 className="bg-green-200 rounded px-2 text-sm font-bold cursor-pointer"
               >
-                Read US
+                {isReading ? 'Stop' : 'Read US'}
               </button>
 
               <button
-                onClick={() => handleClickOnText(item.description, 'UK')}
+                onClick={() => {
+                  setIsReading((pre) => !pre)
+                  handleClickOnText(item.description, 'UK')
+                }}
                 className="bg-blue-300 rounded px-2 text-sm font-bold cursor-pointer mx-2"
               >
-                Read UK
+                {isReading ? 'Stop' : 'read UK'}
               </button>
             </div>
           ))}
