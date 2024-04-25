@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import RealStory from './components/realStory.jsx'
 import { topics } from './data/data.js'
 export default function Home() {
   const todayTopics = topics
@@ -93,6 +94,9 @@ export default function Home() {
           ))}
         </div>
       </div>
+      <hr className="my-20" />
+
+      <RealStory />
     </main>
   )
 }
