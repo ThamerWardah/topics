@@ -1,6 +1,12 @@
+'use client'
 import { topics } from './data/data.js'
 export default function Home() {
   const todayTopics = topics
+  const handleClickOnText = (text) => {
+    let speech = new SpeechSynthesisUtterance()
+    speech.text = text
+    window.speechSynthesis.speak(speech)
+  }
 
   return (
     <main className="mt-16 px-2">
@@ -14,9 +20,15 @@ export default function Home() {
           {todayTopics[0].arguments.harmful_aspects.map((item, index) => (
             <div key={index}>
               <h2 className="font-bold">{item.point}</h2>
-              <h3 className="px-2 text-justify font-semibold text-gray-600">
+              <h3 className="px-2 text-justify text-sm font-semibold text-gray-600">
                 {item.description}
               </h3>
+              <button
+                onClick={() => handleClickOnText(item.description)}
+                className="bg-green-200 rounded px-2 text-sm font-bold cursor-pointer"
+              >
+                Read
+              </button>
             </div>
           ))}
         </div>
