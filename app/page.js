@@ -5,6 +5,7 @@ export default function Home() {
   const handleClickOnText = (text) => {
     let speech = new SpeechSynthesisUtterance()
     speech.text = text
+    speech.lang = 'en-US'
     window.speechSynthesis.speak(speech)
   }
 
