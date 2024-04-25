@@ -2,11 +2,11 @@
 import { topics } from './data/data.js'
 export default function Home() {
   const todayTopics = topics
-  const handleClickOnText = (text) => {
+  const handleClickOnText = (text, b) => {
     let speech = new SpeechSynthesisUtterance()
     speech.text = text
-    speech.lang = 'en-US'
-    speech.rate = 0.8
+    speech.lang = b === 'US' ? 'en-US' : 'en-GB'
+    speech.rate = 0.75
     speech.volume = 0.8
     window.speechSynthesis.speak(speech)
   }
@@ -27,10 +27,17 @@ export default function Home() {
                 {item.description}
               </h3>
               <button
-                onClick={() => handleClickOnText(item.description)}
+                onClick={() => handleClickOnText(item.description, 'US')}
                 className="bg-green-200 rounded px-2 text-sm font-bold cursor-pointer"
               >
-                Read
+                Read US
+              </button>
+
+              <button
+                onClick={() => handleClickOnText(item.description, 'UK')}
+                className="bg-blue-300 rounded px-2 text-sm font-bold cursor-pointer mx-2"
+              >
+                Read UK
               </button>
             </div>
           ))}
