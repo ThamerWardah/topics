@@ -6,6 +6,8 @@ export default function Home() {
     let speech = new SpeechSynthesisUtterance()
     speech.text = text
     speech.lang = 'en-US'
+    speech.rate = 0.8
+    speech.volume = 0.8
     window.speechSynthesis.speak(speech)
   }
 
